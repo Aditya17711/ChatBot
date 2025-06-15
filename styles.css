@@ -1,0 +1,94 @@
+*
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    
+}
+.main
+{
+
+    height:100vh;
+    width:100vw;
+    background: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+.main_container{
+    height:30rem;
+    width:20rem;
+    background: greenyellow;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    
+}
+
+
+.footer
+{
+    background-color: aliceblue;
+    width:20rem;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+.text
+{
+    height: 3rem;
+    width: 14rem;
+    border: 2px solid black;
+    border-radius: 5px;
+    margin: 5px;
+    padding: 5px;
+    font-size:1rem;
+}
+.send
+{
+    height: 2.9rem;
+    width: 4.5rem;
+    color: azure;
+    border-radius: 3px;
+    background-color: rgb(3, 92, 3);
+}
+
+/* Container where chat messages go */
+.chat {
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    height: 100%;
+    padding: 10px;
+    background-color: #0724c6; /* WhatsApp background */
+}
+.chat::-webkit-scrollbar {
+    display: none; /* Chrome, Safari and Opera */
+}
+
+/* Common message styling */
+.message {
+    max-width: 70%;
+    padding: 10px 15px;
+    margin: 5px 0;
+    border-radius: 10px;
+    word-wrap: break-word;
+    font-size: 0.95rem;
+    line-height: 1.4;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.15);
+}
+
+/* User message (aligned right, green bubble) */
+.user_message {
+    background-color: #dcf8c6;
+    align-self: flex-end;
+    border-bottom-right-radius: 0;
+}
+
+/* Bot reply (aligned left, white bubble) */
+.bot_reply {
+    background-color: #fff;
+    align-self: flex-start;
+    border-bottom-left-radius: 0;
+}
+
