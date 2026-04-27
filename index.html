@@ -3,278 +3,114 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ChatBot Repository — Detailed Description & Sample</title>
+  <title>ChatBot README Page</title>
   <style>
-    :root {
-      --bg: #0f172a;
-      --panel: #111c36;
-      --panel-2: #18284c;
-      --line: #2f4477;
-      --text: #e6edff;
-      --muted: #b8c4ea;
-      --accent: #7aa2ff;
-      --good: #22c55e;
-      --user: #dcf8c6;
-      --bot: #ffffff;
-    }
-
-    * { box-sizing: border-box; }
-
     body {
       margin: 0;
-      font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
-      color: var(--text);
-      background: linear-gradient(180deg, #0b1224 0%, #0f172a 100%);
-      line-height: 1.55;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+      background: #f6f8fa;
+      color: #1f2328;
+      line-height: 1.6;
     }
 
-    .wrap {
-      width: min(1100px, 94%);
-      margin: 2rem auto 3rem;
-      display: grid;
-      gap: 1rem;
-      grid-template-columns: 1.2fr 0.8fr;
-      align-items: start;
-    }
-
-    .card {
-      background: linear-gradient(180deg, var(--panel) 0%, #10192f 100%);
-      border: 1px solid var(--line);
-      border-radius: 14px;
-      padding: 1rem 1.1rem;
-      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.25);
-    }
-
-    h1, h2, h3 { margin: 0 0 0.6rem; line-height: 1.2; }
-    h1 { font-size: 1.65rem; }
-    h2 { font-size: 1.15rem; }
-    h3 { font-size: 1rem; color: #d7e2ff; }
-
-    p, li { color: var(--muted); }
-    ul { margin: 0.4rem 0 0; padding-left: 1.2rem; }
-
-    .tag {
-      display: inline-block;
-      margin-bottom: 0.6rem;
-      border: 1px solid #4b67aa;
-      background: #1a2a56;
-      border-radius: 999px;
-      padding: 0.18rem 0.6rem;
-      font-size: 0.78rem;
-      color: #cbd8ff;
-    }
-
-    .grid-2 {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 0.8rem;
-    }
-
-    .mini {
-      background: var(--panel-2);
-      border: 1px solid var(--line);
+    .readme {
+      max-width: 900px;
+      margin: 32px auto;
+      padding: 32px;
+      background: #ffffff;
+      border: 1px solid #d0d7de;
       border-radius: 10px;
-      padding: 0.75rem;
     }
 
-    pre, code {
-      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    h1, h2, h3 {
+      line-height: 1.25;
+      margin-top: 24px;
+      margin-bottom: 12px;
+      border-bottom: 1px solid #d8dee4;
+      padding-bottom: 6px;
+    }
+
+    h1 { margin-top: 0; font-size: 2rem; }
+    h2 { font-size: 1.4rem; }
+    h3 { font-size: 1.1rem; }
+
+    ul, ol { padding-left: 24px; }
+
+    code, pre {
+      font-family: ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, "Liberation Mono", monospace;
+      font-size: 0.92rem;
+    }
+
+    code {
+      background: rgba(175,184,193,0.2);
+      padding: 0.15em 0.35em;
+      border-radius: 6px;
     }
 
     pre {
-      margin: 0.55rem 0 0;
-      border-radius: 10px;
-      border: 1px solid var(--line);
-      background: #101d3f;
-      color: #dce6ff;
-      padding: 0.75rem;
+      background: #f6f8fa;
+      border: 1px solid #d0d7de;
+      border-radius: 8px;
+      padding: 14px;
       overflow-x: auto;
-      font-size: 0.84rem;
     }
 
     table {
-      width: 100%;
       border-collapse: collapse;
-      margin-top: 0.4rem;
-      font-size: 0.92rem;
+      width: 100%;
+      margin-top: 8px;
     }
 
     th, td {
-      border: 1px solid var(--line);
-      padding: 0.5rem 0.55rem;
+      border: 1px solid #d0d7de;
+      padding: 8px 10px;
       text-align: left;
-      color: var(--muted);
       vertical-align: top;
     }
 
-    th { color: var(--text); background: #13244b; }
+    th { background: #f6f8fa; }
 
-    .demo {
-      display: grid;
-      gap: 0.7rem;
-    }
-
-    .chat {
-      border: 1px solid var(--line);
-      border-radius: 10px;
-      background: #0b1430;
-      min-height: 320px;
-      max-height: 360px;
-      overflow-y: auto;
-      padding: 0.7rem;
-      display: flex;
-      flex-direction: column;
-      gap: 0.5rem;
-    }
-
-    .message {
-      max-width: 78%;
-      padding: 0.5rem 0.66rem;
-      border-radius: 9px;
-      font-size: 0.92rem;
-      box-shadow: 0 1px 2px rgba(0,0,0,0.2);
-      word-wrap: break-word;
-      color: #1f2937;
-    }
-
-    .user_message {
-      background: var(--user);
-      align-self: flex-end;
-      border-bottom-right-radius: 2px;
-    }
-
-    .bot_reply {
-      background: var(--bot);
-      align-self: flex-start;
-      border-bottom-left-radius: 2px;
-    }
-
-    .input-row {
-      display: grid;
-      grid-template-columns: 1fr auto;
-      gap: 0.5rem;
-    }
-
-    .text {
-      border: 1px solid #4362a2;
-      background: #0f1a38;
-      color: #f0f4ff;
-      border-radius: 10px;
-      padding: 0.62rem 0.7rem;
-      outline: none;
-    }
-
-    .send {
-      background: linear-gradient(180deg, #6690ff, #4c70d8);
-      border: 1px solid #4465c6;
-      color: white;
-      border-radius: 10px;
-      padding: 0.6rem 0.9rem;
-      cursor: pointer;
-      font-weight: 600;
-    }
-
-    .kpi {
-      display: flex;
-      gap: 0.6rem;
-      flex-wrap: wrap;
-      margin-top: 0.3rem;
-    }
-
-    .pill {
-      border: 1px solid #3d589b;
-      background: #162a56;
-      color: #d2ddff;
-      border-radius: 999px;
-      font-size: 0.78rem;
-      padding: 0.2rem 0.6rem;
-    }
-
-    .ok { color: var(--good); font-weight: 600; }
-
-    @media (max-width: 920px) {
-      .wrap { grid-template-columns: 1fr; }
-      .grid-2 { grid-template-columns: 1fr; }
+    .note {
+      background: #ddf4ff;
+      border: 1px solid #54aeff;
+      border-radius: 8px;
+      padding: 12px;
+      margin-top: 12px;
     }
   </style>
 </head>
 <body>
-  <main class="wrap">
-    <section>
-      <article class="card">
-        <span class="tag">Repository Overview</span>
-        <h1>ChatBot: Rule-Based Web Chat Demo</h1>
-        <p>
-          This repository is a lightweight browser chatbot project built with plain HTML, CSS, and JavaScript.
-          It is designed for learning and quick prototyping: no build tools, no backend, and no dependencies.
-        </p>
-        <div class="kpi">
-          <span class="pill">Frontend-only</span>
-          <span class="pill">No framework</span>
-          <span class="pill">Static hosting ready</span>
-          <span class="pill">Beginner friendly</span>
-        </div>
-      </article>
+  <main class="readme">
+    <h1>ChatBot</h1>
+    <p>
+      A simple rule-based chatbot built with plain <strong>HTML</strong>, <strong>CSS</strong>, and
+      <strong>JavaScript</strong>. This project is designed for learning and quick prototyping.
+    </p>
 
-      <article class="card">
-        <h2>Detailed Description</h2>
-        <div class="grid-2">
-          <div class="mini">
-            <h3>Purpose</h3>
-            <ul>
-              <li>Demonstrate chatbot UX basics with minimal code.</li>
-              <li>Show a simple message flow from user input to bot response.</li>
-              <li>Serve as a starter template for custom intent mapping.</li>
-            </ul>
-          </div>
-          <div class="mini">
-            <h3>Core Workflow</h3>
-            <ul>
-              <li><code>send()</code> reads and validates the input.</li>
-              <li><code>show()</code> renders messages in the chat window.</li>
-              <li><code>response()</code> resolves a reply from predefined phrases.</li>
-            </ul>
-          </div>
-        </div>
-      </article>
+    <h2>Overview</h2>
+    <ul>
+      <li>No frameworks or build tools required.</li>
+      <li>Runs entirely in the browser.</li>
+      <li>Uses a predefined phrase-to-response mapping.</li>
+      <li>Good starter project for beginners.</li>
+    </ul>
 
-      <article class="card">
-        <h2>Repository Sample Structure</h2>
-<pre>ChatBot/
-├── index.html   # This single-page documentation + live demo
-├── styles.css   # Original external stylesheet (legacy/reference)
-└── script.js    # Original external JavaScript (legacy/reference)</pre>
-      </article>
+    <h2>Project Structure</h2>
+    <pre>ChatBot/
+├── index.html   # README-style project description page
+├── styles.css   # Chat interface styles
+└── script.js    # Chatbot behavior and response logic</pre>
 
-      <article class="card">
-        <h2>File Responsibilities</h2>
-        <table aria-label="file responsibilities">
-          <thead>
-            <tr><th>File</th><th>Role</th><th>Sample Contents</th></tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><code>index.html</code></td>
-              <td>Main entry page and UI scaffold.</td>
-              <td>Layout sections, documentation blocks, chat component.</td>
-            </tr>
-            <tr>
-              <td><code>styles.css</code></td>
-              <td>External style definitions from the original version.</td>
-              <td>Message bubble styling, container and footer layout.</td>
-            </tr>
-            <tr>
-              <td><code>script.js</code></td>
-              <td>Original interaction logic from early implementation.</td>
-              <td><code>send()</code>, <code>show()</code>, and phrase-response mapping.</td>
-            </tr>
-          </tbody>
-        </table>
-      </article>
+    <h2>How It Works</h2>
+    <ol>
+      <li>User enters a message in the input box.</li>
+      <li>The <code>send()</code> function displays the user message.</li>
+      <li>The <code>response()</code> function checks known phrases.</li>
+      <li>The bot reply is shown in the chat area.</li>
+    </ol>
 
-      <article class="card">
-        <h2>Sample Response Mapping</h2>
-<pre>const responses = {
+    <h2>Sample Response Map</h2>
+    <pre>const responses = {
   "hi": "Hi",
   "hello": "Hi, how can I help you today!",
   "how are you": "I am fine, thanks for asking!",
@@ -282,69 +118,42 @@
   "what's your age": "I am a coded chatbot, so I don't have an age.",
   "bye": "Goodbye! Have a great day!"
 };</pre>
-      </article>
-    </section>
 
-    <aside class="card demo">
-      <div>
-        <span class="tag">Live Sample</span>
-        <h2>Interactive Chat Preview</h2>
-        <p>Try: <code>hi</code>, <code>hello</code>, <code>how are you</code>, <code>what's your name</code>, <code>bye</code>.</p>
-      </div>
+    <h2>Example Conversation</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>User Input</th>
+          <th>Bot Reply</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>hello</code></td>
+          <td>Hi, how can I help you today!</td>
+        </tr>
+        <tr>
+          <td><code>what's your name</code></td>
+          <td>My name is Lucifer.</td>
+        </tr>
+        <tr>
+          <td><code>bye</code></td>
+          <td>Goodbye! Have a great day!</td>
+        </tr>
+      </tbody>
+    </table>
 
-      <div class="chat" aria-live="polite"></div>
+    <h2>Run Locally</h2>
+    <pre># Option 1: Open directly
+Open index.html in your browser
 
-      <div class="input-row">
-        <input class="text" type="text" placeholder="Type a sample phrase..." aria-label="chat input" />
-        <button class="send" onclick="send()">Send</button>
-      </div>
+# Option 2: Use a local server
+python -m http.server 8000
+# then open http://localhost:8000</pre>
 
-      <p><span class="ok">✓</span> Press <code>Enter</code> to send quickly.</p>
-    </aside>
+    <div class="note">
+      <strong>Note:</strong> This page is intentionally README-like and static, so it focuses on project documentation and sample usage.
+    </div>
   </main>
-
-  <script>
-    function send() {
-      const inputField = document.querySelector('.text');
-      const input = inputField.value.trim();
-      if (!input) return;
-
-      show(input, 'user_message');
-      inputField.value = '';
-
-      setTimeout(() => {
-        show(response(input), 'bot_reply');
-      }, 400);
-    }
-
-    function show(message, messageClass) {
-      const chat = document.querySelector('.chat');
-      const bubble = document.createElement('div');
-      bubble.classList.add('message', messageClass);
-      bubble.innerText = message;
-      chat.appendChild(bubble);
-      chat.scrollTop = chat.scrollHeight;
-    }
-
-    function response(userMessage) {
-      const responses = {
-        hi: 'Hi',
-        hello: 'Hi, how can I help you today!',
-        'how are you': 'I am fine, thanks for asking!',
-        "what's your name": 'My name is Lucifer.',
-        "what's your age": "I am a coded chatbot, so I don't have an age.",
-        bye: 'Goodbye! Have a great day!'
-      };
-
-      return responses[userMessage.toLowerCase()] ||
-        "Sorry! I don't understand what you are trying to say.";
-    }
-
-    document.querySelector('.text').addEventListener('keydown', (event) => {
-      if (event.key === 'Enter') send();
-    });
-
-    show('Welcome! This panel is a working sample of the repository chatbot.', 'bot_reply');
-  </script>
 </body>
 </html>
